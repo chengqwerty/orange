@@ -1,1 +1,18 @@
-<p>user-login works!</p>
+<div class="w-full h-full" fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card class="mat-elevation-z4 m-b-0" style="max-width: 380px;">
+        <mat-card-title class="text-center m-b-24">Welcome Back!</mat-card-title>
+        <mat-card-content>
+            <form class="mat-form-horizontal" [formGroup]="reactiveForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="enter username" formControlName="username">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="enter password" type="password" formControlName="password">
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
