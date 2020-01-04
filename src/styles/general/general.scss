@@ -1,8 +1,8 @@
 @import "functions";
 @import "variables";
-@import "text";
 @import "size";
 @import "spacing";
+@import "text";
 
 // Generate Helpers
 @each $key, $utility in $utilities {
