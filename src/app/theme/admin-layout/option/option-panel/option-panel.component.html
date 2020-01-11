@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <span>控制面板</span>
+</mat-toolbar>
+<mat-accordion>
+    <mat-expansion-panel expanded="true" disabled="true" hideToggle="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title style="color: rgba(0, 0, 0, 0.87);">
+                主题选择
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout fxLayoutAlign="space-between" style="padding-left: 16px;padding-right: 16px;">
+            <ng-container *ngFor="let item of themes">
+                <div [style.background-color]="item.background" class="art-theme-container" (click)="changeTheme(item)">
+                    <span><mat-icon [svgIcon]="item.icon"></mat-icon></span>
+                </div>
+            </ng-container>
+        </div>
+
+
+    </mat-expansion-panel>
+</mat-accordion>

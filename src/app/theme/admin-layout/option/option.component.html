@@ -1,0 +1,3 @@
+<app-option-navigation (click)="reverse()" cdkDrag style="position: fixed;z-index: 9;top: 210px;right: 30px;" (cdkDragStarted)="handleDragStart($event)"></app-option-navigation>
+<div *ngIf="opened" class="art-option-overlay" (click)="reverse()"></div>
+<app-option-panel @panel-enter-leave class="art-option-panel" *ngIf="opened"></app-option-panel>

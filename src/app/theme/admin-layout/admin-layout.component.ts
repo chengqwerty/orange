@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { SettingService } from '../../core/service/setting.service';
+import { AppSettings } from '../../core/setting';
 
 @Component({
     selector: 'app-admin-layout',
@@ -7,20 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLayoutComponent implements OnInit {
 
-    public option = {
-        header: {
-            position: 'above',
-        }
-    };
-    public layout = { };
+    public option: AppSettings;
+    public layout: any;
+    public unsubscribe$;
 
-    constructor() { }
+    constructor(private setting: SettingService) {
+        this.option = this.setting.getOptions();
+    }
 
     ngOnInit() {
         this.layout = {
-            'art-header-above': this.option.header.position === 'above',
-            'art-header-fixed': this.option.header.position === 'fixed',
+            'art-header-above': this.option.headerPos === 'above',
+            'art-header-fixed': this.option.headerPos === 'fixed',
         };
+        this.unsubscribe$ = this.setting.getOptionSubscribe().subscribe(item => {
+            this.changeTheme();
+        });
     }
+
+    changeTheme() {
+        document.getElementById('app-container').classList.add('black');
+    }
+
+    // @HostBinding('class.theme-dark') get themeDark() {
+    //     return this.options.theme === 'dark';
+    // }
 
 }
