@@ -1,13 +1,20 @@
 <div class="art-container-wrap" [ngClass]="layout">
-    <app-header *ngIf="option.headerPos === 'above'"></app-header>
+    <app-header *ngIf="option.showHeader && option.headerPos === 'above'"></app-header>
     <mat-sidenav-container class="art-container" autosize="true">
-        <mat-sidenav mode="side" opened>
-            This is sidenav!
+        <mat-sidenav mode="side" [opened]="option.showSidenav">
+            <app-sidenav-menu></app-sidenav-menu>
         </mat-sidenav>
         <mat-sidenav-content>
-            <app-header *ngIf="option.headerPos === 'fixed'"></app-header>
+            <app-header *ngIf="option.showHeader && (option.headerPos === 'fixed' || option.headerPos === 'static')"></app-header>
             <mat-checkbox>lkdsjfkd</mat-checkbox>
-            <button mat-raised-button color="accent">Click me!</button>
+            <div class="example-button-row">
+                <button mat-raised-button>Basic</button>
+                <button mat-raised-button color="primary">Primary</button>
+                <button mat-raised-button color="accent">Accent</button>
+                <button mat-raised-button color="warn">Warn</button>
+                <button mat-raised-button disabled>Disabled</button>
+                <a mat-raised-button routerLink=".">Link</a>
+            </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
 

@@ -1,21 +1,55 @@
-<mat-toolbar>
-    <span>控制面板</span>
-</mat-toolbar>
-<mat-accordion>
-    <mat-expansion-panel expanded="true" disabled="true" hideToggle="true">
-        <mat-expansion-panel-header>
-            <mat-panel-title style="color: rgba(0, 0, 0, 0.87);">
-                主题选择
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div fxLayout fxLayoutAlign="space-between" style="padding-left: 16px;padding-right: 16px;">
-            <ng-container *ngFor="let item of themes">
-                <div [style.background-color]="item.background" class="art-theme-container" (click)="changeTheme(item)">
-                    <span><mat-icon [svgIcon]="item.icon"></mat-icon></span>
-                </div>
-            </ng-container>
-        </div>
+<mat-card class="art-card-container">
+    <mat-toolbar>
+        <span>控制面板</span>
+    </mat-toolbar>
+    <mat-accordion multi="true">
+        <!-- 主题配置 -->
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    主题选择
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout fxLayoutAlign="space-between" class="p-y-16">
+                <ng-container *ngFor="let item of themes">
+                    <div [style.background-color]="item.background" class="art-theme-container" (click)="changeTheme(item)">
+                        <span><mat-icon [svgIcon]="item.icon"></mat-icon></span>
+                    </div>
+                </ng-container>
+            </div>
+        </mat-expansion-panel>
+        <!-- 菜单栏配置 -->
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    菜单栏
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <h4>是否隐藏</h4>
+            <section>
+                <mat-slide-toggle [(ngModel)]="option.showHeader" (change)="optionsChange()"></mat-slide-toggle>
+            </section>
+            <h4>位置</h4>
+            <section>
+                <mat-radio-group [(ngModel)]="option.headerPos" (change)="optionsChange()">
+                    <mat-radio-button value="above">above</mat-radio-button>
+                    <mat-radio-button value="fixed">fixed</mat-radio-button>
+                    <mat-radio-button value="static">static</mat-radio-button>
+                </mat-radio-group>
+            </section>
+        </mat-expansion-panel>
+        <!-- 侧边栏配置 -->
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    侧边栏
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <h4>是否隐藏</h4>
+            <section>
+                <mat-slide-toggle [(ngModel)]="option.showSidenav" (change)="optionsChange()"></mat-slide-toggle>
+            </section>
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-card>
 
-
-    </mat-expansion-panel>
-</mat-accordion>

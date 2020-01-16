@@ -6,8 +6,8 @@ import {
     MatDialogModule, MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule,
-    MatSidenavModule,
+    MatInputModule, MatRadioModule,
+    MatSidenavModule, MatSliderModule, MatSlideToggleModule,
     MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -23,6 +23,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        MatRadioModule,
+        MatSliderModule,
+        MatSlideToggleModule,
         MatSidenavModule,
         MatSnackBarModule,
         MatToolbarModule

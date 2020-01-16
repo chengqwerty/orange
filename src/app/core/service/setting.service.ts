@@ -13,6 +13,10 @@ export class SettingService {
         return this.options;
     }
 
+    setOptions(option) {
+        Object.assign(this.options, option);
+    }
+
     getOptionSubscribe() {
         return this.optionSubject;
     }

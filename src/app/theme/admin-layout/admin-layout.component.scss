@@ -1,9 +1,24 @@
-.art-container-wrap, .art-container {
+.art-container-wrap {
+    width: 100%;
     height: 100%;
 }
-
+.art-header-fixed, .art-header-static {
+    .art-container {
+        height: 100%;
+    }
+}
 .art-header-above {
     .art-container {
-        background-color: aqua;
+        height: calc(100% - 64px) !important;
     }
+}
+
+.art-header-above.art-header-hidden {
+    .art-container {
+        height: 100% !important;
+    }
+}
+
+mat-sidenav {
+    width: 220px;
 }

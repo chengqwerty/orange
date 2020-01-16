@@ -18,17 +18,25 @@ export class AdminLayoutComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.layout = {
-            'art-header-above': this.option.headerPos === 'above',
-            'art-header-fixed': this.option.headerPos === 'fixed',
-        };
+        this.changeLayout();
         this.unsubscribe$ = this.setting.getOptionSubscribe().subscribe(item => {
             this.changeTheme();
+            this.changeLayout();
         });
     }
 
+    changeLayout() {
+        this.layout = {
+            'art-header-above': this.option.headerPos === 'above',
+            'art-header-fixed': this.option.headerPos === 'fixed',
+            'art-header-static': this.option.headerPos === 'static',
+            'art-header-hidden': this.option.showHeader === false,
+        };
+    }
+
     changeTheme() {
-        document.getElementById('app-container').classList.add('black');
+        document.getElementById('app-container').removeAttribute('class');
+        document.getElementById('app-container').setAttribute('class', this.option.theme);
     }
 
     // @HostBinding('class.theme-dark') get themeDark() {
